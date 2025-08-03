@@ -5,11 +5,11 @@ import Link from 'next/link'
 
 export default function Card({img, title}) {
   return (
-    <div className='w-[30%] max-h-[190px] rounded-[14px] relative mx-auto'>
+    <div className='w-full rounded-[14px] relative mx-auto'>
         <img className='w-full h-full object-contain  rounded-[14px] ' src={img} alt="" />
-       <div className='absolute top-13 right-7'>
-         <h2 className='font-extrabold text-[28px] text-[#2B3741]'>{title}</h2>
-        <Link href={``} className='w-[50px] h-[50px] rounded-full bg-[#44433f] text-white flex justify-center items-center mt-10'>
+       <div className='absolute w-full left-0 right-0 top-0 bottom-0 flex flex-col justify-between pt-[60px] pb-[20px] pr-[24px]'>
+         <h2 className='font-extrabold text-[24px] text-[#2B3741]'>{title}</h2>
+        <Link href={``} className='w-[40px] h-[40px] rounded-full bg-[#44433f] text-white flex justify-center items-center'>
         <SVGPlay />
         </Link>
        </div>

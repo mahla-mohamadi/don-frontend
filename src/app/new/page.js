@@ -8,9 +8,9 @@ export default function page() {
         console.log('Quantity changed to:', newQuantity);
     };
     return (
-        <div className="container mx-auto px-2 lg:py-4">
-            <div className="max-w-[380px] w-full overflow-hidden mx-auto object-cover relative rounded-[24px] mainOverlay max-h-screen">
-                <img src="/img/domy.png" alt="" className="block w-full h-full"/>
+        <div className="mx-auto lg:py-4 h-full">
+            <div className="max-w-[480px] w-full h-full overflow-hidden mx-auto object-cover relative rounded-[24px] mainOverlay">
+                <img src="/img/domy.png" alt="" className="block w-full h-full object-cover"/>
                 <Back link="../" className="absolute right-[28px] top-[48px] z-20"/>
                 <div className="rounded-t-[25px] mainBox z-20">
                     <h2 className="text-[20px] font-[800]">سناریو بازپرس</h2>

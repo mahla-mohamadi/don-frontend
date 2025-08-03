@@ -40,6 +40,9 @@
     @apply after:content-[''] after:hidden after:w-full after:h-full after:bg-[#44433f2f] after:absolute after:top-0 after:z-10 hover:after:flex ;
   }
 }
+
+
+
 input{
   @apply bg-transparent;
 }
@@ -64,7 +67,7 @@ body {
   background-color: rgba(0, 117, 149, 1);
   color: #fff;
   border-radius: 6px;
-  padding: 10px;
+  padding: 15px 10px;
   width: 100%;
   cursor: pointer;
   transition: all .4s;
@@ -123,7 +126,7 @@ body {
   gap: 25px;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;

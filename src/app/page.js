@@ -2,8 +2,23 @@
 import LoginForm from "@/app/components/partials/login-form";
 import Card from "./components/ui/gameCard/card";
 import SeeRoll from "./components/ui/deck/seeRoll";
+import axios from "axios";
+import { useEffect } from "react";
 export default function Home() {
-
+  useEffect(() => {
+      axios.get('https://api.donplay.ir/api/scenario')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+      });
+  }, []);
   const card = [
     {
       id : 1,

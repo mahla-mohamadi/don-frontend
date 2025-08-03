@@ -3,11 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --titleText: #373F46;
+  --bgLoad: #F5F5F5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-titleText: var(--titleText);
+  --color-bgLoad: var(--bgLoad);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -30,6 +35,9 @@
   }
   .buttonSubmit{
     @apply bg-teal-700 text-white rounded-md p-3 w-full cursor-pointer hover:bg-teal-800 duration-300;
+  }
+  .after{
+    @apply after:content-[''] after:hidden after:w-full after:h-full after:bg-[#44433f2f] after:absolute after:top-0 after:z-10 hover:after:flex ;
   }
 }
 input{

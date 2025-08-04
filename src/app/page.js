@@ -4,26 +4,23 @@ import Card from "./components/ui/gameCard/card";
 import SeeRoll from "./components/ui/deck/seeRoll";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import ApiService from "@/lib/api.service";
 
 export default function Home() {
   const [cards, setCards] = useState([]);
 
 
   useEffect(() => {
-      axios.get('https://api.donplay.ir/api/scenario')
-        .then(function (response) {
-          // handle success
-          setCards(response.data.data);
-          console.log(response);
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function () {
-          // always executed
-      });
+    const fetchScenarios = async () => {
+      try {
+        const scenarios = await ApiService.get('/scenario');
+        setCards(scenarios);
+      } catch (error) {
+        console.error('Error fetching scenarios:', error);
+      }
+    };
+
+    fetchScenarios();
   }, []);
 
   return (

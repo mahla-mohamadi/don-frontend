@@ -2,10 +2,22 @@
 import Button from "../components/ui/layout/general-button"
 import Quantity from "../components/ui/layout/quantity"
 import Back from "../components/ui/layout/back-button";
-
+import ApiService from "@/lib/api.service";
 export default function page() {
     const handleQuantityChange = (newQuantity) => {
         console.log('Quantity changed to:', newQuantity);
+    };
+    const createNewDeck = async () => {
+    try {
+        const newDeck = {
+            name: "donDeck",
+            player_count: 13,
+        };
+
+        const response = await ApiService.post('/scenario/bazpors/deck', newDeck);
+    } catch (error) {
+        console.error("Error creating scenario:", error);
+    }
     };
     return (
         <div className="mx-auto lg:py-4 h-full">
@@ -17,7 +29,7 @@ export default function page() {
                     <Quantity 
                         onQuantityChange={handleQuantityChange}
                     />
-                    <Button label="توزیع نقش" onClick={() => console.log('Button clicked')} />
+                    <Button label="توزیع نقش" onClick={() => createNewDeck()} />
                 </div>
             </div>
         </div>

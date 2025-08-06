@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "tailwindcss-animated";
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -39,7 +39,7 @@
     @apply bg-teal-700 text-white rounded-md p-3 w-full cursor-pointer hover:bg-teal-800 duration-300;
   }
   .after{
-    @apply after:content-[''] after:hidden after:w-full after:h-full after:bg-[#44433f2f] after:absolute after:top-0 after:z-10 hover:after:flex ;
+    @apply after:content-[''] after:transition-all after:delay-150 after:opacity-0 after:w-full after:h-full after:bg-[#44433f2f] after:absolute after:top-0 after:z-10 hover:after:flex hover:after:opacity-100 ;
   }
 }
 
@@ -88,8 +88,9 @@ body {
   background-color: #fff;
   display: flex;
   align-items: center;
-  width: 62px;
-  height: 62px;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
   justify-content: center;
   border-radius: 100%;
   transition: all .4s;
@@ -134,7 +135,17 @@ body {
   bottom: 0;
 }
 
-
+.boxOverlay:after{
+  position: absolute;
+  content: '';
+  background: #322E23E5;
+  background: linear-gradient(180deg, rgb(31, 29, 23) 0%, rgba(50, 46, 35, 0) 40%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
 .btnAnimated::after{
     content: "";
     display: block;

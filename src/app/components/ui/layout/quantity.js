@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SVGMinus , SVGPlus } from "@/app/svg";
 export default function Quantity({
   min = 10,
-  max = 15,
+  max = 13,
   defaultValue = 10,
   onQuantityChange,
   className = '',

@@ -10,7 +10,7 @@ export default function Back({ className = '', link='#', ...props }) {
         href={link}
         {...props}
         >
-        <SVGRightArrow />
+        <SVGRightArrow className='rotate-180'/>
         </Link>
     )
 }

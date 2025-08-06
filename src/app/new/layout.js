@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { LoadingProvider , useLoading } from '../context/LoadingContext';
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -84,6 +85,7 @@ export default function RootLayout({ children }) {
 
   return (
     <>
+    <LoadingProvider>
       {showProgress && (
         <div className="fixed top-0 left-0 right-0 h-[2px] z-[9999] bg-gray-200">
           <div
@@ -94,11 +96,14 @@ export default function RootLayout({ children }) {
       )}
 
       {children}
+      </LoadingProvider>
     </>
   );
 }
 
 function LoadingSpinner() {
+  const { isLoading } = useLoading();
+  if (!isLoading) return null;
   return (
     <svg
       width={60}

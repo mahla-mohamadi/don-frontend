@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Button from "@/app/components/ui/layout/general-button";
 import Quantity from "@/app/components/ui/layout/quantity";
 import Back from "@/app/components/ui/layout/back-button";
@@ -6,31 +6,14 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ApiService from "@/lib/api.service";
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { useLoading } from "@/app/context/LoadingContext";
 export default function Page() {
     const params = useParams();
     const router = useRouter();
     const { slug } = params;
     const [scenario, setScenario] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { isLoading, setLoading } = useLoading();
     const [quantity, setQuantity] = useState(10);
-
-    useEffect(() => {
-        const fetchScenario = async () => {
-            try {
-                setLoading(true);
-                const response = await ApiService.get(`/scenario/${slug}`);
-                if (response) {
-                    setScenario(response);
-                }
-            } catch (error) {
-                console.log('Error fetching scenario:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchScenario();
-    }, [slug]);
 
     const handleQuantityChange = (newQuantity) => {
         setQuantity(newQuantity);
@@ -50,12 +33,28 @@ export default function Page() {
             console.log("Error creating scenario:", error);
         }
     };
+    useEffect(() => {
+        const fetchScenario = async () => {
+            try {
+                setLoading(true);
+                const response = await ApiService.get(`/scenario/${slug}`);
+                if (response) {
+                    setScenario(response);
+                }
+            } catch (error) {
+                console.log('Error fetching scenario:', error);
+            } finally{
+                setLoading(false);
+            }
+        };
+        fetchScenario();
 
-    if (loading) {
-        return <div className="text-center py-8">در حال بارگزاری</div>;
+    }, [slug]);
+    if(isLoading){
+        setLoading(true);
     }
     if (!scenario) {
-        return <div className="text-center py-8">سناریو یافت نشد</div>;
+        return ;
     }
 
     return (

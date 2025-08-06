@@ -8,14 +8,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ResetBtn from '@/app/components/ui/gameCard/resetBtn';
 import Button from '@/app/components/ui/layout/general-button';
 import Link from 'next/link';
-
+import { useLoading } from '@/app/context/LoadingContext';
 export default function DeckPage() {
     const params = useParams();
     const router = useRouter();
     const { slug, id } = params;
     const [currentRole, setCurrentRole] = useState(null);
     const [showRole, setShowRole] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const { isLoading, setLoading } = useLoading();
     const [finished, setFinished] = useState(false);
     const [totalRoles, setTotalRoles] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,7 +23,9 @@ export default function DeckPage() {
     const [firstTap, setFirstTap] = useState(true); // Track if it's the first tap
 
     const fetchDeckInfo = async () => {
+        
         try {
+            setLoading(true);
             const response = await ApiService.get(`/scenario/${slug}/deck/${id}`);
             if (response) {
                 setDeckInfo(response);
@@ -31,6 +33,8 @@ export default function DeckPage() {
             }
         } catch (error) {
             console.log('Error fetching deck info:', error);
+        }finally {
+            setLoading(false);
         }
     };
 
@@ -41,7 +45,7 @@ export default function DeckPage() {
             if (response) {
                 setCurrentRole(response);
                 setCurrentIndex(prev => prev + 1);
-                return true; // Return success status
+                return true;
             }
         } catch (error) {
             if (error.response?.data?.message === 'No Cards Remaining') {
@@ -58,11 +62,12 @@ export default function DeckPage() {
 
     useEffect(() => {
         const initialize = async () => {
+            setLoading(true);
             await fetchDeckInfo();
             setLoading(false);
         };
         initialize();
-    }, []);
+    }, [slug, id]);
 
     const handleTap = async () => {
         if (finished) return;
@@ -87,7 +92,7 @@ export default function DeckPage() {
         }
     };
 
-    if (loading) {
+    if (isLoading) {
         return (
             <div className="flex items-center justify-center h-screen bg-[#e4dbce]">
                 <div>در حال بارگزاری...</div>

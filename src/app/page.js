@@ -1,28 +1,26 @@
 'use client';
-import LoginForm from "@/app/components/partials/login-form";
 import Card from "./components/ui/gameCard/card";
-import SeeRoll from "./components/ui/deck/seeRoll";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ApiService from "@/lib/api.service";
-
+import { useRouter } from "next/navigation";
 export default function Home() {
+  const router = useRouter();
   const [cards, setCards] = useState([]);
-
-
   useEffect(() => {
     const fetchScenarios = async () => {
       try {
         const scenarios = await ApiService.get('/scenario');
         setCards(scenarios);
       } catch (error) {
-        console.error('Error fetching scenarios:', error);
+        console.log('Error fetching scenarios:', error);
       }
     };
-
     fetchScenarios();
   }, []);
-
+  const createNewDeck = (id) => { 
+    console.log(id);
+    router.push(`/new/${id}`);
+  };
   return (
     <div className="container mx-auto p-1">
       <div className="w-full  pt-10 min-h-screen">
@@ -35,8 +33,10 @@ export default function Home() {
               return(
               <Card  
               key={val.id}
+              id={val.slug}
               title={val.name}
               img={val.images?.[0]?.original}
+              onClick={() => createNewDeck(val.slug)} 
               />)
             })}
         </div>  

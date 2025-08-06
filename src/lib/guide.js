@@ -4,7 +4,7 @@ const fetchScenarios = async () => {
     const data = await ApiService.get('/scenario');
     // console.log(data);
     } catch (error) {
-    // console.error('Error fetching scenarios:', error);
+    // console.log('Error fetching scenarios:', error);
     }
 };
 
@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
         console.log('Scenario created:', newScenario);
         // Reset form or redirect
     } catch (error) {
-        console.error('Error creating scenario:', error);
+        console.log('Error creating scenario:', error);
     }
 };
 
@@ -36,7 +36,7 @@ const createScenario = async () => {
     console.log("Created scenario:", response);
     // Handle success (e.g., update state or show notification)
   } catch (error) {
-    console.error("Error creating scenario:", error);
+    console.log("Error creating scenario:", error);
     // Handle error
   }
 };
@@ -47,7 +47,7 @@ const handleUpdate = async () => {
         const updatedScenario = await ApiService.put(`/scenario/${scenarioId}`, { name });
         console.log('Updated:', updatedScenario);
     } catch (error) {
-        console.error('Error updating:', error);
+        console.log('Error updating:', error);
     }
 };
 
@@ -61,7 +61,7 @@ const handleDelete = async () => {
         console.log('Scenario deleted');
         // Refresh list or redirect
     } catch (error) {
-        console.error('Error deleting:', error);
+        console.log('Error deleting:', error);
     }
 };
 
@@ -75,7 +75,7 @@ const searchScenarios = async (query) => {
     const results = await ApiService.get('/scenario/search', { q: query });
     console.log('Search results:', results);
   } catch (error) {
-    console.error('Search failed:', error);
+    console.log('Search failed:', error);
   }
 };
 
@@ -91,7 +91,7 @@ const handleLogin = async (email, password) => {
     ApiService.setAuthToken(token); // Store token for future requests
     localStorage.setItem('authToken', token);
   } catch (error) {
-    console.error('Login failed:', error);
+    console.log('Login failed:', error);
   }
 };
 

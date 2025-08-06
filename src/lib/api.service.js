@@ -32,7 +32,7 @@ const ApiService = {
     try {
       return await apiClient.get(endpoint, { params });
     } catch (error) {
-      console.error('GET request failed:', error);
+      console.log('GET request failed:', error);
       throw error;
     }
   },
@@ -42,7 +42,7 @@ const ApiService = {
     try {
       return await apiClient.post(endpoint, data);
     } catch (error) {
-      console.error('POST request failed:', error);
+      console.log('POST request failed:', error);
       throw error;
     }
   },
@@ -52,7 +52,7 @@ const ApiService = {
     try {
       return await apiClient.put(endpoint, data);
     } catch (error) {
-      console.error('PUT request failed:', error);
+      console.log('PUT request failed:', error);
       throw error;
     }
   },
@@ -62,7 +62,7 @@ const ApiService = {
     try {
       return await apiClient.delete(endpoint);
     } catch (error) {
-      console.error('DELETE request failed:', error);
+      console.log('DELETE request failed:', error);
       throw error;
     }
   },

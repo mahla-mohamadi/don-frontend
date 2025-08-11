@@ -196,26 +196,23 @@ export default function FinishDeck() {
     return (
         <div className='relative'>
             <ResetBtn href="/" />
-            <div className='w-full h-[200px] overflow-hidden relative after:absolute after:bg-[rgba(0,0,0,0.55)] after:left-0 after:right-0 after:top-0 after:bottom-0 after:w-full after:h-full after:z-10'>
+            <div className='w-full px-4 pt-20 min-h-screen overflow-hidden flex flex-col justify-start items-center relative after:absolute after:bg-[rgba(0,0,0,0.55)] after:left-0 after:right-0 after:top-0 after:bottom-0 after:w-full after:h-full after:z-10 after:backdrop-blur-[3px] '>
                 {scenario?.images?.[1]?.original && (
                     <img 
-                        src={scenario.images[0].original}
+                        src={scenario.images[1].original}
                         alt={scenario.name || 'Scenario image'}
-                        className='w-full h-full block object-cover'
+                        className='w-full h-full block absolute left-0 right-0 top-0 bottom-0 m-auto object-cover'
                     />
                 )}
                 {deckInfo && (
-                    <div className='absolute right-0 z-20 top-0 bottom-0 m-auto h-max pr-6 pt-8'>
-                        <span className='text-white block text-[13px] font-light opacity-[0.7]'>دک {deckInfo.player_count} نفره</span>
-                        <span className='text-white text-[20px] font-semibold mt-1 block'>سناریو {deckInfo.scenario_name}</span>
-                        <span className='text-white text-[12px] font-light opacity-[0.7] mt-5 block'>شروع: {createdTime}</span>
+                    <div className='relative z-20 w-full'>
+                        <span className='text-white text-[13px] font-light opacity-[0.7]'>دک {deckInfo.player_count} نفره - </span><span className='text-white text-[12px] font-light opacity-[0.7] mt-5'>شروع: {createdTime}</span>
+                        <span className='text-white text-[30px] font-semibold mt-1 block'>سناریو {deckInfo.scenario_name}</span>
                     </div>
                 )}
-            </div>
-            
-            <div className='container px-2 py-4'>
+            <div className='container relative py-4 z-30 '>
                 {/* Minimal Timer Section */}
-                <div className="flex justify-between flex-wrap mb-3 gap-2">
+                <div className="justify-between flex-wrap mb-3 gap-2 hidden ">
                     {/* 60-second Timer */}
                     <div className="bg-white p-2 items-center rounded-lg border border-gray-100 flex-1">
                         <div className="flex flex-col items-center justify-center">
@@ -287,17 +284,17 @@ export default function FinishDeck() {
                     </div>
                 </div>
                 
-                <div className="mb-2 w-full mx-auto border border-gray-100 p-3 rounded-[6px]">
+                <div className="mb-2 w-full mx-auto border border-gray-100 p-3 rounded-[6px] bg-[rgba(225,225,225,0.2)]">
                 <button 
                     onClick={() => setIsRolesAccordionOpen(!isRolesAccordionOpen)}
                     className="flex items-center justify-between w-full"
                 >
-                    <h2 className="text-[15px] font-medium">نقش‌ها به ترتیب پخش شدن</h2>
+                    <h2 className="text-[15px] font-medium text-white">نقش‌ها به ترتیب پخش شدن</h2>
                     <div className='flex justify-center items-center'>
                         {isRolesAccordionOpen ? (
-                            <span>مخفی کردن</span>
+                            <span className='text-white'>مخفی کردن</span>
                         ):(
-                            <span>مشاهده</span>
+                            <span className='text-white'>مشاهده</span>
                         )}
                      <svg 
                         xmlns="http://www.w3.org/2000/svg" 
@@ -305,7 +302,7 @@ export default function FinishDeck() {
                         height="18" 
                         viewBox="0 0 24 24" 
                         fill="none" 
-                        stroke="currentColor" 
+                        stroke="#fff" 
                         strokeWidth="1" 
                         strokeLinecap="round" 
                         strokeLinejoin="round"
@@ -342,6 +339,7 @@ export default function FinishDeck() {
                     ))}
                 </div>
                 </motion.div>
+            </div>
             </div>
         </div>
     );

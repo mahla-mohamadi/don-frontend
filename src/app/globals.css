@@ -139,7 +139,7 @@ body {
   position: absolute;
   content: '';
   background: #322E23E5;
-  background: linear-gradient(180deg, rgb(31, 29, 23) 0%, rgba(50, 46, 35, 0) 40%);
+  background: linear-gradient(180deg, rgb(31, 29, 23) 30%, rgba(50, 46, 35, 0) 60%);
   top: 0;
   bottom: 0;
   left: 0;

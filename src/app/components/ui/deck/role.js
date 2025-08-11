@@ -26,7 +26,7 @@ export default function Role({ name = 'بازپرس', enName = 'INVESTIGATOR', n
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className='w-full text-center fixed top-[80px] left-0 right-0 z-20'
+                className='w-full text-center fixed top-[60px] left-0 right-0 z-20'
             >
                 <motion.h2 
                     className='text-[45px] font-extrabold mb-2 text-white'

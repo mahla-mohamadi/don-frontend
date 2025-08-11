@@ -20,7 +20,7 @@ export default function DeckPage() {
     const [totalRoles, setTotalRoles] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [deckInfo, setDeckInfo] = useState(null);
-    const [firstTap, setFirstTap] = useState(true); // Track if it's the first tap
+    const [firstTap, setFirstTap] = useState(true); 
 
     const fetchDeckInfo = async () => {
         
@@ -115,23 +115,27 @@ export default function DeckPage() {
                     transition={{ type: 'spring', stiffness: 100 }}
                     className="text-center w-full h-full flex flex-col relative justify-center items-center container px-2"
                 >
+                    <img className='w-[200px] h-[200px] mb-4' src="/img/donClub.png" />
                     <motion.h2 
-                        className="text-2xl font-bold mb-4"
+                        className="text-[20px] font-bold mb-4"
                         initial={{ y: -20 }}
                         animate={{ y: 0 }}
                         transition={{ delay: 0.2 }}
                     >
-                        😀<br />
-                        خوش بگذره
+                        پایان تقسیم نقش
                     </motion.h2>
                     <motion.p
+                        className='text-[16px]'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                     >
-                         همه پلیرها نقش گرفتن
+                         تمام پلیرها نقش گرفتن
                     </motion.p>
-                    <Link href='/' className='bg-white p-2 text-neutral-800 rounded-[4px] mt-[20px] min-w-[150px] text-center'>شروع دک جدید</Link>
+                    <div className='flex flex-wrap gap-6 mt-6 justify-between items-center'>
+                        <Link href={`/new/${slug}/deck/${id}/finish`} className='bg-[#007595] w-full p-3 text-white rounded-[4px] mt-[20px] min-w-[150px] text-center'>مشاهده این دک</Link>
+                        <Link href='/' className='border border-neutral-800 m-auto p-2 text-neutral-800 rounded-[4px] min-w-[150px] text-center'>شروع دک جدید</Link>
+                    </div>
                 </motion.div>
             </motion.div>
             </>

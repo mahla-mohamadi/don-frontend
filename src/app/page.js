@@ -22,20 +22,20 @@ export default function Home() {
     router.push(`/new/${id}`);
   };
   return (
-    <div className="container mx-auto p-1">
-      <div className="w-full  pt-10 min-h-screen">
+    <div className="container mx-auto px-2">
+      <div className="w-full pt-5 min-h-screen">
         <div className="mb-3 w-full pr-1  mx-auto">
-          <h2 className="text-[16px] text-titleText">تقسیم نقش</h2>
-          <span className="h-[2px] w-9 bg-[#D52A2A] flex mt-1"></span>
+          <h2 className="text-[20px] font-semibold text-titleText">انتخاب سناریو</h2>
+          <span className="h-[3px] w-15 bg-[#D52A2A] flex mt-2"></span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"> 
+        <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-3 gap-[8px]"> 
             {cards.map((val)=>{
               return(
               <Card  
               key={val.id}
               id={val.slug}
               title={val.name}
-              img={val.images?.[0]?.original}
+              img={val.images?.[1]?.original}
               onClick={() => createNewDeck(val.slug)} 
               />)
             })}
